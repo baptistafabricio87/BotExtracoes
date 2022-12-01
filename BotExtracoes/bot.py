@@ -19,20 +19,20 @@ class Bot(DesktopBot):
         self.login_sap()
         print("Login OK! Processo Iniciado! Por favor aguarde...")
         self.executa_sap_sp02()
-        # self.extrair_me3l()
-        # self.extrair_zmm_contrato()
-        # self.extrair_acomp_pedido()
-        # self.extrair_po_contrato()
-        # self.extrair_ydv1()
-        # self.extrair_zmm_fornecedores()
-        # self.extrair_zmm_qualif_forn_rel()
-        # self.type_keys(["f3", "f3"])
-        # self.formatar_exportar_arquivos()
+        self.extrair_me3l()
+        self.extrair_zmm_contrato()
+        self.extrair_acomp_pedido()
+        self.extrair_po_contrato()
+        self.extrair_ydv1()
+        self.extrair_zmm_fornecedores()
+        self.extrair_zmm_qualif_forn_rel()
+        self.type_keys(["f3", "f3"])
+        self.formatar_exportar_arquivos()
         print("Processo Finalizado!")
 
     def login_sap(self):
         """
-        Executa realiza login no SAP GUI.
+        Executa e realiza login no SAP GUI.
         Assim que inicia é solicitado usuario e senha no prompt de comando.
 
         Args:
@@ -221,7 +221,7 @@ class Bot(DesktopBot):
         
     
     def not_found(self, label):
-        print(f"Element not found: {label}")
+        print(f"Element not found (Elemento nao encontrado): {label}")
 
 
 if __name__ == "__main__":

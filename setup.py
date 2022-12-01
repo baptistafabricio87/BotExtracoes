@@ -33,5 +33,5 @@ setup(
             'resources',
         ]
     },
-    install_requires=requirements,
+    install_requires='requirements',
 )
