@@ -17,18 +17,17 @@ from botcity.core import DesktopBot
 class Bot(DesktopBot):
     def action(self, execution=None):
         self.login_sap()
-        self.action
         print("Login OK! Processo Iniciado! Por favor aguarde...")
         self.executa_sap_sp02()
-        self.extrair_me3l()
-        self.extrair_zmm_contrato()
-        self.extrair_acomp_pedido()
-        self.extrair_po_contrato()
-        self.extrair_ydv1()
-        self.extrair_zmm_fornecedores()
-        self.extrair_zmm_qualif_forn_rel()
-        self.type_keys(["f3", "f3"])
-        self.formatar_exportar_arquivos()
+        # self.extrair_me3l()
+        # self.extrair_zmm_contrato()
+        # self.extrair_acomp_pedido()
+        # self.extrair_po_contrato()
+        # self.extrair_ydv1()
+        # self.extrair_zmm_fornecedores()
+        # self.extrair_zmm_qualif_forn_rel()
+        # self.type_keys(["f3", "f3"])
+        # self.formatar_exportar_arquivos()
         print("Processo Finalizado!")
 
     def login_sap(self):
@@ -43,12 +42,8 @@ class Bot(DesktopBot):
         usuario = input("Informar Usuario SAP: ")
         senha = pwinput(prompt="Informar Senha SAP: ")
 
-        if not self.find( 
-            "localiza_sap_gui", matching=0.97, waiting_time=50000
-        ):
-            self.not_found("localiza_sap_gui")
-        self.click()
-
+        self.execute("C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\saplogon.exe")
+        
         if not self.find( 
             "localiza_b05_pd4", matching=0.97, waiting_time=50000
         ):
@@ -62,16 +57,12 @@ class Bot(DesktopBot):
         self.click_relative(158, 7)
 
         self.paste(usuario)
-        self.tab()
+        self.tab(wait=100)
         self.paste(senha)
         self.key_enter()
 
     def executa_sap_sp02(self):
-        if not self.find( 
-            "encontrar_botao_continuar", matching=0.97, waiting_time=50000
-        ):
-            self.not_found("encontrar_botao_continuar")
-        self.click_relative(51, 8)
+        self.wait(2000)
         self.type_keys(["S", "P", "0", "2", "return"])
         self.type_keys(["ctrl", "shift", "f10"])
         self.type_keys(["tab", "tab", "tab", "delete", "return"])
@@ -108,12 +99,12 @@ class Bot(DesktopBot):
             self.not_found("localiza_diretorio")
         self.click()
 
-        self.tab()
+        self.tab(wait=100)
         self.paste(text=caminho_diretorio)
-        self.tab()
-        self.kb_type(text=nome_arquivo)
-        self.tab()
-        self.tab()
+        self.tab(wait=100)
+        self.paste(text=nome_arquivo)
+        self.tab(wait=100)
+        self.tab(wait=100)
         self.space()
         if not self.find( 
             "confirma_arq_salvo", matching=0.97, waiting_time=wait_time
