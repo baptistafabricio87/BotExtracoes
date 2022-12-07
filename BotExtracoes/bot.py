@@ -1,16 +1,15 @@
 from botcity.core import DesktopBot
-from pwinput import pwinput
-
-# Uncomment the line below for integrations with BotMaestro
-# Using the Maestro SDK
-# from botcity.maestro import *
-
+import pyautogui as pag
 
 class Bot(DesktopBot):
     def action(self, execution=None):
+        pag.alert(
+            "INICIANDO PROCESSO DE EXTRAÇÕES \
+                \nInforme login e senha SAP e aguarde."
+        )
         self.login_sap()
-        print("Login OK! Processo Iniciado! Por favor aguarde...")
         self.executa_sap_sp02()
+        print("Login OK! Processo Iniciado! Por favor aguarde...")
         self.extrair_me3l()
         self.extrair_zmm_contrato()
         self.extrair_acomp_pedido()
@@ -21,6 +20,10 @@ class Bot(DesktopBot):
         self.type_keys(["f3", "f3"])
         self.formatar_exportar_arquivos()
         print("Processo Finalizado!")
+        pag.alert(
+            "PROCESSO CONCLUÍDO! \
+                \nFavor aguardar macros de formatação e importação"
+        )
 
     def login_sap(self):
         """
@@ -31,8 +34,8 @@ class Bot(DesktopBot):
             usuario (str): Usuario SAP
             senha (str): Senha SAP
         """
-        usuario = input("Informar Usuario SAP: ")
-        senha = pwinput(prompt="Informar Senha SAP: ")
+        usuario = pag.prompt("Informar Usuario SAP ")
+        senha = pag.password("Informar Senha SAP ", mask="*")
 
         self.execute(
             "C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\saplogon.exe"
