@@ -66,14 +66,14 @@ class Bot(DesktopBot):
         self.wait(1000)
         self.type_keys(["tab", "tab", "tab", "delete", "return"])
 
-    def salva_arquivo(self, nome_arquivo, caminho_diretorio, wait_time, me3l):
+    def salva_arquivo(self, nome_arquivo, caminho_diretorio, wait_time, convert):
         if not self.find(
             "btn_gravar_file_local", matching=0.97, waiting_time=wait_time
         ):
             self.not_found("btn_gravar_file_local")
         self.click()
 
-        if not me3l:
+        if not convert:
             if not self.find(
                 "selecionar_texto_com_tabuladores",
                 matching=0.97,
@@ -119,7 +119,7 @@ class Bot(DesktopBot):
         self.click_relative(-337, 3)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=100000,
             nome_arquivo="Acomp_Pedido.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -133,7 +133,7 @@ class Bot(DesktopBot):
         self.click_relative(-336, 2)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=40000,
             nome_arquivo="POContrato.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -145,7 +145,7 @@ class Bot(DesktopBot):
         self.click_relative(-335, 4)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=10000,
             nome_arquivo="YDV1.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -159,7 +159,7 @@ class Bot(DesktopBot):
         self.click_relative(-334, 6)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=1000000,
             nome_arquivo="ZMM_contratos.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -173,7 +173,7 @@ class Bot(DesktopBot):
         self.click_relative(-333, 4)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=50000,
             nome_arquivo="ZMM_fornecedores.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -187,7 +187,7 @@ class Bot(DesktopBot):
         self.click_relative(-335, 4)
 
         self.salva_arquivo(
-            me3l=False,
+            convert=False,
             wait_time=30000,
             nome_arquivo="ZMM_qualif_forn_rel.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
@@ -199,7 +199,7 @@ class Bot(DesktopBot):
         self.click_relative(-334, 4)
 
         self.salva_arquivo(
-            me3l=True,
+            convert=True,
             wait_time=600000,
             nome_arquivo="ME3L.txt",
             caminho_diretorio="P:\\Central_Abastecimento\\Automações\\Projeto de Contratos\\Parametros\\",
